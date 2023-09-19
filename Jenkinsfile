@@ -24,7 +24,7 @@ pipeline {
                     attachLog: true,
                     body: 'PFA the Logs',
                     from: 'gera.himanshu1990@gmail.com',
-                    to: 'gera.himanshu1990@gmail.com'
+                    to: 'himanshu_gera@epam.com'
             }
         }
     }
