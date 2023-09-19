@@ -1,7 +1,7 @@
 node {
 
     tools {
-        maven "Default"
+            def mvnHome = tool name: 'Default', type: 'hudson.tasks.Maven$MavenInstallation'
     }
 
     stage('Build') {
