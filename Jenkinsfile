@@ -1,6 +1,6 @@
 node {
     stage('Build') {
-       sh 'mvn install'
+       sh 'clean install'
     }
 
     stage('Archive') {
