@@ -1,4 +1,9 @@
 node {
+
+    tools {
+        maven "Default"
+    }
+
     stage('Build') {
        sh "mvn -Dmaven.test.failure.ignore=true clean package"
     }
@@ -8,10 +13,10 @@ node {
     }
 
     stage('email Report') {
-        emailext subject: 'Jenkins Multibranch Report',
-            attachLog: true,
-            body: 'PFA the Logs',
-            from: 'gera.himanshu1990@gmail.com',
-            to: 'gera.himanshu1990@gmail.com'
+        emailext subject: 'Jenkins Multibranch Report using Declarative Pipeline',
+        attachLog: true,
+        body: 'PFA the Logs',
+        from: 'gera.himanshu1990@gmail.com',
+        to: 'himanshu_gera@epam.com'
     }
 }
