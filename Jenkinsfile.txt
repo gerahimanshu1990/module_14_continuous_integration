@@ -1,9 +1,17 @@
 pipeline {
   agent any
+
   stages {
+
     stage('Build') {
       steps {
-        bat(script: 'mvn clean test', returnStatus: true)
+        bat(script: 'mvn clean install')
+      }
+    }
+
+    stage('Test') {
+      steps {
+        bat(script: 'mvn test', returnStatus: true)
       }
     }
 
@@ -18,6 +26,5 @@ pipeline {
         emailext(subject: 'Jenkins Multibranch Report', attachLog: true, body: 'PFA the Logs', from: 'gera.himanshu1990@gmail.com', to: 'gera.himanshu1990@gmail.com')
       }
     }
-
   }
 }
