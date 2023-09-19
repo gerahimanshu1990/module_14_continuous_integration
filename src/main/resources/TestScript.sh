@@ -1,0 +1,1 @@
+echo "Welcome to EPAM Jenkins task"
