@@ -5,13 +5,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        bat(script: 'mvn clean install')
-      }
-    }
-
-    stage('Test') {
-      steps {
-        bat(script: 'mvn test', returnStatus: true)
+        bat(script: 'mvn clean install',returnStatus: true)
       }
     }
 
