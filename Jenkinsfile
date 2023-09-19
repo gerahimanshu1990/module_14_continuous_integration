@@ -1,27 +1,17 @@
-pipeline {
-    agent any
+node {
+    stage('Build') {
+        bat(script: 'mvn clean install', returnStatus: true)
+    }
 
-    stages {
-        stage('Build') {
-            steps {
-                bat(script: 'mvn clean install', returnStatus: true)
-            }
-        }
+    stage('Archive') {
+        archiveArtifacts 'target/surefire-reports/emailable-report.html'
+    }
 
-        stage('Archive') {
-            steps {
-                archiveArtifacts 'target/surefire-reports/emailable-report.html'
-            }
-        }
-
-        stage('email Report') {
-            steps {
-                emailext subject: 'Jenkins Multibranch Report using Declarative Pipeline',
-                    attachLog: true,
-                    body: 'PFA the Logs',
-                    from: 'gera.himanshu1990@gmail.com',
-                    to: 'gera.himanshu1990@gmail.com'
-            }
-        }
+    stage('email Report') {
+        emailext subject: 'Jenkins Multibranch Report',
+            attachLog: true,
+            body: 'PFA the Logs',
+            from: 'gera.himanshu1990@gmail.com',
+            to: 'gera.himanshu1990@gmail.com'
     }
 }
