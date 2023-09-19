@@ -1,6 +1,6 @@
 node {
     stage('Build') {
-       sh "mvn -Dmaven.test.failure.ignore=true clean package"
+       sh '-Dmaven.test.failure.ignore=true clean package'
     }
 
     stage('Archive') {
