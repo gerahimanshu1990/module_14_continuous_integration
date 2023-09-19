@@ -1,6 +1,6 @@
 node {
     stage('Build') {
-        bat(script: 'mvn clean install', returnStatus: true)
+        sh 'mvn -Dmaven.test.failure.ignore=true install'
     }
 
     stage('Archive') {
